@@ -76,13 +76,12 @@ const browserSyncJob = () => {
   watch('src/sass/*.scss', buildSass);
   watch('src/css/*.css', buildCss);
   watch('src/js/*.js', buildJs);
-  watch('src/images/*', moveImages);
   watch('src/icons/*', moveIcons);
 }
 
 //production build
 
-const build = series(buildHtml, buildSass, buildCss, buildJs, moveImages, moveIcons);
+const build = series(buildHtml, buildSass, buildCss, buildJs, moveIcons);
 
 //prod compile
 
