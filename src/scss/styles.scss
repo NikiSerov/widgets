@@ -196,20 +196,17 @@ textarea {
     display: none;
 }
 
-.swiper1,
-.swiper2 {
+.currency-slider {
     overflow: hidden;
     width: 70%;
+
+    &__slide {
+        text-align: center;
+    }
 }
 
-.swiper-wrapper.swiper1__wrapper,
-.swiper-wrapper.swiper2__wrapper {
+.swiper-wrapper.currency-slider__wrapper {
     width: 100%;
-}
-
-.swiper-slide.swiper1__slide,
-.swiper-slide.swiper2__slide {
-    text-align: center;
 }
 
 .swiper-slide.swiper-slide-active {

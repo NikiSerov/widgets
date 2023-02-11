@@ -17,7 +17,7 @@ const initSwiper = (classNames) => {
     })
 };
 
-initSwiper(['.swiper1', '.swiper2']);
+initSwiper(['.currency-slider--first', '.currency-slider--second']);
 
 const getRates = async (curr1, curr2) => {
     const [rate1, rate2] = await Promise.all([requestRate(curr1, curr2), requestRate(curr2, curr1)]);
@@ -45,16 +45,16 @@ const toggleCurrencyWrappers = (containerToHide, containerToShow) => {
     }, 400)
 };
 
-const setRates = async () => {
-    const currency1 = $('.swiper1 .swiper-slide-active').data('currency');
-    const currency2 = $('.swiper2 .swiper-slide-active').data('currency');
-    const [rate1, rate2] = await getRates(currency1, currency2);
-    $('.currency-rate__rate--1').text(getCurrencyText(currency1, currency2, rate1));
-    $('.currency-rate__rate--2').text(getCurrencyText(currency2, currency1, rate2));
+const setRates = (className, currency1, currency2, rate) => {
+    $(className).text(getCurrencyText(currency1, currency2, rate));
 };
 
-const checkBtnClickHandler = () => {
-    setRates();
+const checkBtnClickHandler = async () => {
+    const currency1 = $('.currency-slider--first .swiper-slide-active').data('currency');
+    const currency2 = $('.currency-slider--second .swiper-slide-active').data('currency');
+    const [rate1, rate2] = await getRates(currency1, currency2);
+    setRates('.currency-rate__rate--first', currency1, currency2, rate1);
+    setRates('.currency-rate__rate--second', currency2, currency1, rate2);
     toggleCurrencyWrappers($('.currency-rate__select-wrapper'), $('.currency-rate__rates-wrapper'));
 };
 
