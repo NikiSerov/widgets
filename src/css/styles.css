@@ -1,0 +1,208 @@
+@keyframes anim {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30%/30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 4vmin rgb(255, 182, 193) inset, 0 -4vmin 4vmin rgb(147, 112, 216) inset, 0 -2vmin 7vmin rgb(128, 0, 128) inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80%/25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53%/37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53%/37% 40% 60% 63%;
+    box-shadow: 0 -4vmin 8vmin rgb(255, 105, 180) inset, -1vmin -2vmin 6vmin rgb(255, 182, 193) inset, -1vmin -2vmin 4vmin rgb(147, 112, 216) inset, 1vmin 4vmin 8vmin rgb(128, 0, 128) inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18%/74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 4vmin 16vmin rgb(255, 105, 180) inset, 0 2vmin 5vmin rgb(255, 182, 193) inset, 0 4vmin 4vmin rgb(147, 112, 216) inset, 0 6vmin 8vmin rgb(128, 0, 128) inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47%/72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47%/26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 8vmin rgb(255, 182, 193) inset, 2vmin -1vmin 4vmin rgb(147, 112, 216) inset, -1vmin -1vmin 16vmin rgb(128, 0, 128) inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47%/26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80%/20% 80% 20% 80%;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at -16% -16%, rgb(255, 105, 180), rgb(106, 90, 205));
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  color: #FFFFFF;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 400;
+  font-size: 4vmin;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Chakra Petch", sans-serif;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+input,
+textarea,
+button {
+  appearance: none;
+  border-radius: 0;
+  border: none;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 16px;
+}
+
+button {
+  background-color: transparent;
+  line-height: 125%;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+button:hover {
+  color: rgb(255, 105, 180);
+  transform: scale(1.05);
+}
+
+textarea {
+  resize: none;
+}
+
+.bubble {
+  position: relative;
+  animation: anim 30s infinite;
+  background: radial-gradient(circle at 0% 0%, rgb(255, 105, 180), rgb(106, 90, 205));
+  border-radius: 30% 70% 53% 47%/26% 46% 54% 74%;
+  box-shadow: 0 -2vmin 4vmin rgb(255, 182, 193) inset, 0 1vmin 4vmin rgb(147, 112, 216) inset, 0 -2vmin 7vmin rgb(128, 0, 128) inset;
+  filter: drop-shadow(0 0 3vmin rgb(216, 191, 216)) drop-shadow(0 5vmin 4vmin rgb(218, 112, 214)) drop-shadow(2vmin -2vmin 15vmin rgb(123, 104, 238)) drop-shadow(0 0 7vmin rgb(185, 85, 211));
+  height: 75vmin;
+  width: 75vmin;
+}
+
+.bubble__inner {
+  width: 100%;
+  height: 100%;
+}
+
+.currency-rate {
+  width: 100%;
+  height: 100%;
+}
+
+.currency-rate__select-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.currency-rate__select-text {
+  font-size: 6vmin;
+}
+
+.currency-rate__check-button {
+  font-size: 4vmin;
+  transition: all 0.3s;
+}
+
+.currency-rate__rates-wrapper {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.currency-rate__rate {
+  font-size: 4vmin;
+}
+
+.currency-rate__reset-btn {
+  transition: all 0.3s;
+}
+
+.currency-rate__reset-btn svg {
+  width: 7vmin;
+  height: 7vmin;
+}
+
+.currency-rate__reset-btn svg g g g path {
+  transition: fill 0.3s;
+}
+
+.currency-rate__reset-btn:hover svg g g g path {
+  fill: rgb(255, 105, 180);
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.swiper1,
+.swiper2 {
+  overflow: hidden;
+  width: 70%;
+}
+
+.swiper-wrapper.swiper1__wrapper,
+.swiper-wrapper.swiper2__wrapper {
+  width: 100%;
+}
+
+.swiper-slide.swiper1__slide,
+.swiper-slide.swiper2__slide {
+  text-align: center;
+}
+
+.swiper-slide.swiper-slide-active {
+  color: rgb(255, 182, 193);
+  transition: transform 0.3s;
+}

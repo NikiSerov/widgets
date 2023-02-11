@@ -14,7 +14,7 @@ const cachebust = require('gulp-cache-bust');
 //CSS
 
 const buildSass = () => {
-  return src('src/sass/*.scss')
+  return src('src/scss/*.scss')
     .pipe(sass({ errLogToConsole: true }))
     .pipe(gcmq())
     .pipe(plumber())
@@ -35,10 +35,10 @@ const buildCss = () => {
 const buildJs = () => {
   return src('src/js/*.js')
     .pipe(concat('js/scripts.js'))
-    .pipe(babel({
-      presets: ['@babel/preset-env']
-    }))
-    .pipe(uglyfly())
+    // .pipe(babel({
+    //   presets: ['@babel/preset-env']
+    // }))
+    // .pipe(uglyfly())
     .pipe(dest('build'))
     .pipe(browserSync.reload({ stream: true }));
 }
@@ -73,7 +73,7 @@ const browserSyncJob = () => {
   });
 
   watch('src/*.html', buildHtml);
-  watch('src/sass/*.scss', buildSass);
+  watch('src/scss/*.scss', buildSass);
   watch('src/css/*.css', buildCss);
   watch('src/js/*.js', buildJs);
   watch('src/icons/*', moveIcons);
