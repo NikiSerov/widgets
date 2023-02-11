@@ -1,0 +1,45 @@
+@keyframes anim {
+  0%, 100% {
+    border-radius: 30% 70% 70% 30%/30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 4vmin rgb(255, 182, 193) inset, 0 -4vmin 4vmin rgb(147, 112, 216) inset, 0 -2vmin 7vmin rgb(128, 0, 128) inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80%/25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53%/37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53%/37% 40% 60% 63%;
+    box-shadow: 0 -4vmin 8vmin rgb(255, 105, 180) inset, -1vmin -2vmin 6vmin rgb(255, 182, 193) inset, -1vmin -2vmin 4vmin rgb(147, 112, 216) inset, 1vmin 4vmin 8vmin rgb(128, 0, 128) inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18%/74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 4vmin 16vmin rgb(255, 105, 180) inset, 0 2vmin 5vmin rgb(255, 182, 193) inset, 0 4vmin 4vmin rgb(147, 112, 216) inset, 0 6vmin 8vmin rgb(128, 0, 128) inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47%/72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47%/26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 8vmin rgb(255, 182, 193) inset, 2vmin -1vmin 4vmin rgb(147, 112, 216) inset, -1vmin -1vmin 16vmin rgb(128, 0, 128) inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47%/26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80%/20% 80% 20% 80%;
+  }
+}

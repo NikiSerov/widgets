@@ -1,0 +1,6 @@
+@mixin hoverScaleHotPink {
+    &:hover {
+        color: $hotpink;
+        transform: scale(1.05);
+    }
+}

@@ -36,7 +36,7 @@ const getCurrencyText = (baseCurr, rateCurr, rate) => {
     return `1 ${baseCurr} = ${rate} ${rateCurr}`;
 };
 
-const toggleCurrencyWrappers = (containerToHide, containerToShow) => {
+const toggleContainers = (containerToHide, containerToShow) => {
     containerToHide.animate({opacity: 'hide'}, 400, () => {
         $(this).hide();
     });
@@ -55,11 +55,11 @@ const checkBtnClickHandler = async () => {
     const [rate1, rate2] = await getRates(currency1, currency2);
     setRates('.currency-rate__rate--first', currency1, currency2, rate1);
     setRates('.currency-rate__rate--second', currency2, currency1, rate2);
-    toggleCurrencyWrappers($('.currency-rate__select-wrapper'), $('.currency-rate__rates-wrapper'));
+    toggleContainers($('.currency-rate__select-wrapper'), $('.currency-rate__rates-wrapper'));
 };
 
 const resetCurrency = () => {
-    toggleCurrencyWrappers($('.currency-rate__rates-wrapper'), $('.currency-rate__select-wrapper'));
+    toggleContainers($('.currency-rate__rates-wrapper'), $('.currency-rate__select-wrapper'));
     setTimeout(() => {
         $('.currency-rate__rate').text('');
     }, 500)

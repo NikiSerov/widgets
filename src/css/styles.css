@@ -98,13 +98,58 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  color: rgb(255, 105, 180);
-  transform: scale(1.05);
-}
-
 textarea {
   resize: none;
+}
+
+.widgets-nav-button {
+  position: absolute;
+  width: 100%;
+  height: 8vmin;
+  z-index: 1;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.widgets-nav-button::after {
+  content: "";
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+  height: 8vmin;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.widgets-nav-button:hover::after {
+  opacity: 1;
+}
+
+.widgets-nav-button:hover .widgets-nav-button__svg g path {
+  fill: rgb(255, 105, 180);
+}
+
+.widgets-nav-button .widgets-nav-button__svg {
+  width: 6vmin;
+  height: 6vmin;
+}
+
+.widgets-nav-button .widgets-nav-button__svg g path {
+  transition: fill 0.3s;
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.widgets-nav-button--prev {
+  top: 0;
+}
+
+.widgets-nav-button--next {
+  bottom: 0;
+}
+
+.widgets-nav-button--next::after {
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
 }
 
 .bubble {
@@ -147,6 +192,11 @@ textarea {
   transition: all 0.3s;
 }
 
+.currency-rate__check-button:hover {
+  color: rgb(255, 105, 180);
+  transform: scale(1.05);
+}
+
 .currency-rate__rates-wrapper {
   width: 100%;
   height: 100%;
@@ -163,6 +213,11 @@ textarea {
 
 .currency-rate__reset-btn {
   transition: all 0.3s;
+}
+
+.currency-rate__reset-btn:hover {
+  color: rgb(255, 105, 180);
+  transform: scale(1.05);
 }
 
 .currency-rate__reset-btn svg {

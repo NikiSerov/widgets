@@ -1,56 +1,6 @@
 @import "variables";
-
-@keyframes anim {
-
-    0%,
-    100% {
-        border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
-        box-shadow: 0 -2vmin 4vmin $lightpink inset, 0 -4vmin 4vmin $mediumpurple inset,
-            0 -2vmin 7vmin $purple inset;
-    }
-
-    10% {
-        border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
-    }
-
-    20% {
-        border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
-    }
-
-    30% {
-        border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
-        box-shadow: 0 -4vmin 8vmin $hotpink inset, -1vmin -2vmin 6vmin $lightpink inset,
-            -1vmin -2vmin 4vmin $mediumpurple inset, 1vmin 4vmin 8vmin $purple inset;
-    }
-
-    40% {
-        border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
-    }
-
-    50% {
-        border-radius: 100%;
-        box-shadow: 0 4vmin 16vmin $hotpink inset, 0 2vmin 5vmin $lightpink inset, 0 4vmin 4vmin $mediumpurple inset,
-            0 6vmin 8vmin $purple inset;
-    }
-
-    60% {
-        border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
-    }
-
-    70% {
-        border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
-        box-shadow: 1vmin 1vmin 8vmin $lightpink inset,
-            2vmin -1vmin 4vmin $mediumpurple inset, -1vmin -1vmin 16vmin $purple inset;
-    }
-
-    80% {
-        border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
-    }
-
-    90% {
-        border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
-    }
-}
+@import "keyframes";
+@import "mixins";
 
 * {
     padding: 0;
@@ -104,15 +54,62 @@ button {
     font-weight: 400;
     color: $white;
     cursor: pointer;
-
-    &:hover {
-        color: $hotpink;
-        transform: scale(1.05);
-    }
 }
 
 textarea {
     resize: none;
+}
+
+.widgets-nav-button {
+    position: absolute;
+    width: 100%;
+    height: 8vmin;
+    z-index: 1;
+    transition: background-image 0.3s ease-in-out;
+
+    &::after {
+        content: "";
+        background-image: linear-gradient(to bottom, rgba($color: $white, $alpha: 0.2), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+        width: 100%;
+        height: 8vmin;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+
+        .widgets-nav-button__svg g path {
+            fill: $hotpink;
+        }
+    }
+
+    .widgets-nav-button__svg {
+        width: 6vmin;
+        height: 6vmin;
+
+        g path {
+            transition: fill 0.3s;
+            fill: rgba($color: $white, $alpha: 0.5);
+        }
+    }
+
+    &--prev {
+        top: 0;
+    }
+
+    &--next {
+        bottom: 0;
+
+        &::after {
+            background-image: linear-gradient(to top, rgba($color: $white, $alpha: 0.2), transparent);
+        }
+    }
 }
 
 .bubble {
@@ -152,6 +149,8 @@ textarea {
     &__check-button {
         font-size: 4vmin;
         transition: all 0.3s;
+
+        @include hoverScaleHotPink;
     }
 
     &__rates-wrapper {
@@ -170,6 +169,8 @@ textarea {
 
     &__reset-btn {
         transition: all 0.3s;
+
+        @include hoverScaleHotPink;
 
         svg {
             width: 7vmin;
