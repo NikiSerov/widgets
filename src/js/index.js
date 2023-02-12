@@ -107,7 +107,7 @@ const setFeelsLikeConditions = (temp) => {
 }
 
 const setConditions = (text) => {
-    $('.weather__text--conditions').text(`${text}`);
+    $('.weather__text--conditions').text(`Sky: ${text}`);
 }
 
 const setHumidity = (humidity) => {
