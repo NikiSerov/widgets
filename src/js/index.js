@@ -130,7 +130,6 @@ const getGeolocation = async () => {
 }
 const getCurrentWeather = async (latitude, longitude) => {
     const weather = await $.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude}%2C%20${longitude}?unitGroup=metric&include=current&key=8H4G9NNFMS2Q77D8VKL5YG6QG&contentType=json`);
-    console.log(weather);
     renderWeatherHTML(weather);
 }
 
