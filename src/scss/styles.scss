@@ -148,7 +148,7 @@ textarea {
     filter: drop-shadow(0 0 3vmin $thistle) drop-shadow(0 5vmin 4vmin $orchid) drop-shadow(2vmin -2vmin 15vmin $mediumslateblue) drop-shadow(0 0 7vmin $mediumorchid);
     height: 75vmin;
     width: 75vmin;
-    will-change: border-radius box-shadow;
+    will-change: border-radius, box-shadow;
 
     &__inner {
         width: 100%;
@@ -277,9 +277,3 @@ textarea {
         }
     }
 }
-
-// @media (max-width: 500px) {
-//     .bubble {
-//         animation: none;
-//     }
-// }
