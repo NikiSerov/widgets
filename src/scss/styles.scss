@@ -10,8 +10,10 @@
 
 body {
     background: radial-gradient(circle at -16% -16%, $hotpink, $slateblue);
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100vh;
     color: $white;
@@ -146,6 +148,7 @@ textarea {
     filter: drop-shadow(0 0 3vmin $thistle) drop-shadow(0 5vmin 4vmin $orchid) drop-shadow(2vmin -2vmin 15vmin $mediumslateblue) drop-shadow(0 0 7vmin $mediumorchid);
     height: 75vmin;
     width: 75vmin;
+    will-change: auto;
 
     &__inner {
         width: 100%;

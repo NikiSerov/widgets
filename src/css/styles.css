@@ -90,8 +90,10 @@
 
 body {
   background: radial-gradient(circle at -16% -16%, rgb(255, 105, 180), rgb(106, 90, 205));
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
   color: #FFFFFF;
@@ -223,6 +225,7 @@ textarea {
   filter: drop-shadow(0 0 3vmin rgb(216, 191, 216)) drop-shadow(0 5vmin 4vmin rgb(218, 112, 214)) drop-shadow(2vmin -2vmin 15vmin rgb(123, 104, 238)) drop-shadow(0 0 7vmin rgb(185, 85, 211));
   height: 75vmin;
   width: 75vmin;
+  will-change: auto;
 }
 
 .bubble__inner {
