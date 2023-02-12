@@ -225,7 +225,7 @@ textarea {
   filter: drop-shadow(0 0 3vmin rgb(216, 191, 216)) drop-shadow(0 5vmin 4vmin rgb(218, 112, 214)) drop-shadow(2vmin -2vmin 15vmin rgb(123, 104, 238)) drop-shadow(0 0 7vmin rgb(185, 85, 211));
   height: 75vmin;
   width: 75vmin;
-  will-change: auto;
+  will-change: border-radius box-shadow;
 }
 
 .bubble__inner {
@@ -353,4 +353,10 @@ textarea {
 .weather__text--feels-like {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 500px) {
+  .bubble {
+    animation: none;
+  }
 }
