@@ -19,6 +19,30 @@ const initSwiper = (classNames) => {
 
 initSwiper(['.currency-slider--first', '.currency-slider--second']);
 
+const nextWidget = () => {
+    $('.active').addClass('slideOutUpAnimation');
+    const nextWidget = $('.active').next().length ? $('.active').next() : $('.active').prev();
+    setTimeout(() => {
+        $('.active').removeClass('active slideOutUpAnimation');
+        nextWidget.addClass('active slideInDownAnimation');
+        setTimeout(() => {
+            $('.active').removeClass('slideInDownAnimation');
+        }, 1000);
+    }, 800);
+}
+
+const prevWidget = () => {
+    $('.active').addClass('slideOutDownAnimation');
+    const prevWidget = $('.active').prev().length ? $('.active').prev() : $('.active').next();
+    setTimeout(() => {
+        $('.active').removeClass('active slideOutDownAnimation');
+        prevWidget.addClass('active slideInUpAnimation');
+        setTimeout(() => {
+            $('.active').removeClass('slideInUpAnimation');
+        }, 1000);
+    }, 800);
+}
+
 const getRates = async (curr1, curr2) => {
     const [rate1, rate2] = await Promise.all([requestRate(curr1, curr2), requestRate(curr2, curr1)]);
     return [rate1.rates[curr2], rate2.rates[curr1]];
@@ -53,17 +77,66 @@ const checkBtnClickHandler = async () => {
     const currency1 = $('.currency-slider--first .swiper-slide-active').data('currency');
     const currency2 = $('.currency-slider--second .swiper-slide-active').data('currency');
     const [rate1, rate2] = await getRates(currency1, currency2);
-    setRates('.currency-rate__rate--first', currency1, currency2, rate1);
-    setRates('.currency-rate__rate--second', currency2, currency1, rate2);
-    toggleContainers($('.currency-rate__select-wrapper'), $('.currency-rate__rates-wrapper'));
+    setRates('.rates__rate--first', currency1, currency2, rate1);
+    setRates('.rates__rate--second', currency2, currency1, rate2);
+    toggleContainers($('.select-currency'), $('.rates'));
 };
 
 const resetCurrency = () => {
-    toggleContainers($('.currency-rate__rates-wrapper'), $('.currency-rate__select-wrapper'));
+    toggleContainers($('.rates'), $('.select-currency'));
     setTimeout(() => {
-        $('.currency-rate__rate').text('');
+        $('.rates__rate').text('');
     }, 500)
 };
 
-$('.currency-rate__check-button').click(checkBtnClickHandler);
-$('.currency-rate__reset-btn').click(resetCurrency);
+const errorCallback = (error) => {
+    console.log(error);
+};
+
+const setCity = (timezone) => {
+    const city = timezone.split('/')[1];
+    $('.weather__city').text(`${city}`);
+}
+
+const setTemp = (temp) => {
+    $('.weather__temp').html(`${temp}&#176C`);
+}
+
+const setFeelsLikeConditions = (temp) => {
+    $('.weather__text--feels-like').html(`Feels like: ${temp}&#176C`);
+}
+
+const setConditions = (text) => {
+    $('.weather__text--conditions').text(`${text}`);
+}
+
+const setHumidity = (humidity) => {
+    $('.weather__text--humidity').text(`Humidity: ${humidity}%`);
+}
+
+const renderWeatherHTML = (weather) => {
+    setCity(weather.timezone);
+    setTemp(weather.currentConditions.temp)
+    setFeelsLikeConditions(weather.currentConditions.feelslike);
+    setConditions(weather.currentConditions.conditions);
+    setHumidity(weather.currentConditions.humidity);
+}
+  
+const getGeolocation = async () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+        getCurrentWeather(position.coords.latitude, position.coords.longitude)
+    }, errorCallback);
+   
+}
+const getCurrentWeather = async (latitude, longitude) => {
+    const weather = await $.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude}%2C%20${longitude}?unitGroup=metric&include=current&key=8H4G9NNFMS2Q77D8VKL5YG6QG&contentType=json`);
+    console.log(weather);
+    renderWeatherHTML(weather);
+}
+
+getGeolocation();
+
+$('.widgets-nav-button--prev').click(nextWidget);
+$('.widgets-nav-button--next').click(prevWidget);
+$('.select-currency__check-button').click(checkBtnClickHandler);
+$('.rates__reset-btn').click(resetCurrency);

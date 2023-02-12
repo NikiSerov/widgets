@@ -51,3 +51,39 @@
         border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
     }
 }
+
+@keyframes slideOutUp {
+    100% {
+        opacity: 0;
+        transform: translateY(20%) rotateX(45deg) scale(0.7);
+    }
+}
+
+@keyframes slideOutDown {
+    100% {
+        opacity: 0;
+        transform: translateY(-20%) rotateX(45deg) scale(0.7);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20%) rotateX(45deg) scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20%) rotateX(45deg) scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+    }
+}

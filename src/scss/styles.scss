@@ -60,6 +60,22 @@ textarea {
     resize: none;
 }
 
+.slideOutUpAnimation {
+    animation: slideOutUp 1s;
+}
+
+.slideOutDownAnimation {
+    animation: slideOutDown 1s;
+}
+
+.slideInUpAnimation {
+    animation: slideInUp 1s;
+}
+
+.slideInDownAnimation {
+    animation: slideInDown 1s;
+}
+
 .widgets-nav-button {
     position: absolute;
     width: 100%;
@@ -112,6 +128,15 @@ textarea {
     }
 }
 
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
 .bubble {
     position: relative;
     animation: anim 30s infinite;
@@ -128,22 +153,32 @@ textarea {
     }
 }
 
-.currency-rate {
+.widget-container {
     width: 100%;
     height: 100%;
+}
 
-    &__select-wrapper {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5%;
-    }
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
 
-    &__select-text {
-        font-size: 6vmin;
+.widget-container.active {
+    display: block;
+}
+
+.widget-container:not(active) {
+    display: none;
+}
+
+.select-currency {
+    &__text {
+        font-size: 5.5vmin;
     }
 
     &__check-button {
@@ -152,16 +187,10 @@ textarea {
 
         @include hoverScaleHotPink;
     }
+}
 
-    &__rates-wrapper {
-        width: 100%;
-        height: 100%;
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5%;
-    }
+.rates {
+    display: none;
 
     &__rate {
         font-size: 4vmin;
@@ -189,14 +218,6 @@ textarea {
     }
 }
 
-.show {
-    display: flex;
-}
-
-.hide {
-    display: none;
-}
-
 .currency-slider {
     overflow: hidden;
     width: 70%;
@@ -213,4 +234,43 @@ textarea {
 .swiper-slide.swiper-slide-active {
     color: $lightpink;
     transition: transform 0.3s;
+}
+
+.weather {
+    &__title {
+        font-size: 6vmin;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+        height: 100%;
+        gap: 4%;
+    }
+
+    &__main {
+        display: flex;
+        justify-content: center;
+        font-size: 5vmin;
+        gap: 4%;
+    }
+
+    &__temp {
+        display: flex;
+    }
+
+    &__text {
+        text-align: center;
+        font-size: 3.5vmin;
+
+        &--feels-like {
+            display: flex;
+            justify-content: center;
+        }
+    }
 }
