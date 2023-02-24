@@ -218,7 +218,6 @@ textarea {
 
 .bubble {
   position: relative;
-  animation: anim 30s infinite;
   background: radial-gradient(circle at 0% 0%, rgb(255, 105, 180), rgb(106, 90, 205));
   border-radius: 30% 70% 53% 47%/26% 46% 54% 74%;
   box-shadow: 0 -2vmin 4vmin rgb(255, 182, 193) inset, 0 1vmin 4vmin rgb(147, 112, 216) inset, 0 -2vmin 7vmin rgb(128, 0, 128) inset;
