@@ -89,10 +89,6 @@ const resetCurrency = () => {
     }, 500)
 };
 
-const errorCallback = (error) => {
-    console.log(error);
-};
-
 const setCity = (timezone) => {
     const city = timezone.split('/')[1];
     $('.weather__city').text(`${city}`);
@@ -121,6 +117,14 @@ const renderWeatherHTML = (weather) => {
     setConditions(weather.currentConditions.conditions);
     setHumidity(weather.currentConditions.humidity);
 }
+
+const renderError = (errorText) => {
+    $('.weather__text--feels-like').text(`${errorText}`);
+} 
+
+const errorCallback = (error) => {
+    renderError(error.message);
+};
   
 const getGeolocation = async () => {
     navigator.geolocation.getCurrentPosition((position) => {
